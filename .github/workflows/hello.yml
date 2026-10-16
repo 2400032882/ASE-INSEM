@@ -1,0 +1,26 @@
+
+name: Java Hello World
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run-java:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Compile Java
+        run: javac Hello.java
+
+      - name: Execute Java
+        run: java Hello
